@@ -145,9 +145,8 @@
   <div class="container is-max-desktop">
     <!-- Animation. -->
     <div class="columns is-centered">
-
-      <div class="column is-full-width">
-        <h2 class="title is-3">Overview of MAW Dataset Collection and Evaluation Pipeline</h2>
+      <div class="column">
+        <h2 class="title">Overview of MAW Dataset Collection and Evaluation Pipeline</h2>
 	<div class="content">
 	<p>Overview of the data collection and evaluation pipeline of MAW dataset. For each region with homogeneous albedo, we measure albedo as a single RGB vector after averaging. For a given predicted albedo image, we select pixels that lie inside the region, yielding a single RGB vector after averaging. We then compare the predicted albedo against the ground-truth using our metrics.</p>	
 	<img src="./static/images/measure_albedo.png">
@@ -155,15 +154,14 @@
       </div>
     </div>
     <!--/ Animation. -->
-
     <div class="columns is-centered">
-
       <!-- Visual Effects. -->
       <div class="column">
-        <div class="content">
-          <h2 class="title is-3">WHDR Metric Alone</h2>
+        <h2 class="title">WHDR Metric Alone</h2>
+	<div class="content">
           <p>
-	    Many existing algorithm produce albedo with strong artifacts despite good IIW score.</p></h2>
+	    Many existing algorithm produce albedo with strong artifacts despite good IIW score.
+	  </p>
           <!-- <video id="dollyzoom" autoplay controls muted loop playsinline height="100%"> -->
           <!--   <source src="./static/videos/dollyzoom-stacked.mp4" -->
           <!--           type="video/mp4"> -->
@@ -175,39 +173,29 @@
 
       <!-- Matting. -->
       <div class="column">
-        <h2 class="title is-3">WHDR + Proposed Metrics</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-	      With WHDR + proposed metrics, we can capture these artifacts.
-            </p>
-	    <img src="./static/images/iiw_comparison_2.png" />
-          </div>
-
+        <h2 class="title">WHDR + Proposed Metrics</h2>
+	<div class="content">
+          <p>
+	    With WHDR + proposed metrics, we can capture these artifacts.
+          </p>
+	  <img src="./static/images/iiw_comparison_2.png" />
         </div>
       </div>
     </div>
     <!--/ Matting. -->
-
-
-
     <!-- Concurrent Work. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Finetuning</h2>
 	<div class="content">
-	<p>
-	  Despite that our dataset only contain 888 images, we show finetuning significantly improves albedo prediction of state-of-the-art algorithms. Notice the improvements in color tinge.
-	</p>
-	
-        <div class="content has-text-justified">
+	  <p>
+	    Despite that our dataset only contain 888 images, we show finetuning significantly improves albedo prediction of state-of-the-art algorithms. Notice the improvements in color tinge.
+	  </p>
 	  <img src="./static/images/finetune_qual.png">
-	</div>
 	</div>
       </div>
     </div>
     <!--/ Concurrent Work. -->
-
   </div>
 </section>
 
