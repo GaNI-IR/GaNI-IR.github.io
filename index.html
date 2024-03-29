@@ -1,253 +1,308 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="description"
-        content="">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Measured Albedo in the Wild: Filling the Gap in Intrinsics Evaluation</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="">
+    <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GaNI: Global and Near Field Illumination Aware Neural Inverse Rendering</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
 
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+    <!-- <link rel="stylesheet" href="./static/css/bulma.min.css"> -->
+    <!-- <link rel="stylesheet" href="./static/css/bulma-carousel.min.css"> -->
+    <!-- <link rel="stylesheet" href="./static/css/bulma-slider.min.css"> -->
+    <!-- <link rel="stylesheet" href="./static/css/fontawesome.all.min.css"> -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+      >
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/css/bulma-carousel.min.css"
+      >
+    
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.svg">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script defer src="./static/js/fontawesome.all.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/js/bulma-carousel.js"></script>
+    <!-- <script src="./static/js/bulma-slider.min.js"></script> -->
+    <script src="./static/js/index.js"></script>
+  </head>
+  <body>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-</head>
-<body>
 
+    <section class="hero">
+      <div class="hero-body">
+	<div class="container is-max-desktop">
+	  <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">GaNI: Global and Near Field Illumination Aware Neural Inverse Rendering
+	      </h1>
+              <div class="is-size-5 publication-authors">
+		<span class="author-block">Jiaye Wu<sup>1</sup>,</span>
+		<span class="author-block">Saeed Hadadan<sup>1</sup>,</span>
+		<span class="author-block">Geng Lin<sup>1</sup>,</span>
+		<span class="author-block">Matthias Zwicker<sup>1</sup>,</span>
+		<span class="author-block">
+		  <a href="http://www.cs.umd.edu/~djacobs/">David Jacobs</a><sup>1</sup>,
+		</span>
+		<span class="author-block">
+		  <a href="https://www.cs.unc.edu/~ronisen/">Roni Sengupta</a><sup>2</sup>,
+		</span>
+              </div>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Measured Albedo in the Wild: Filling the Gap in Intrinsics Evaluation</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">Jiaye Wu<sup>1</sup>,</span>
-            <span class="author-block">Sanjoy Chowdhury<sup>1</sup>,</span>
-            <span class="author-block">Hariharmano Shanmugaraja<sup>1</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://www.cs.umd.edu/~djacobs/">David Jacobs</a><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.cs.unc.edu/~ronisen/">Soumyadip Sengupta</a><sup>2</sup>,
-            </span>
-          </div>
+              <div class="is-size-5 publication-authors">
+		<span class="author-block"><sup>1</sup>University of Maryland</span>
+		<span class="author-block"><sup>2</sup>University of North Carolina, Chapel Hill</span>
+              </div>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Maryland</span>
-            <span class="author-block"><sup>2</sup>University of North Carolina, Chapel Hill</span>
-          </div>
+              <div class="column has-text-centered">
+		<div class="publication-links">
+		  <!-- PDF Link. -->
+		  <span class="link-block">
+                    <a href=""
+                       class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+			<i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
+		  </span>
+		  <span class="link-block">
+                    <a href="https://arxiv.org/abs/2403.15651"
+                       class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+			<i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
+		  </span>
+		  <!-- Code Link. -->
+		  <span class="link-block">
+                    <a href=""
+                       class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+			<i class="fab fa-github"></i>
+                      </span>
+                      <span>Code (Soon)</span>
+                    </a>
+		  </span>
+		  <!-- Dataset Link. -->
+		  <span class="link-block">
+                    <a href=""
+                       class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+			<i class="far fa-images"></i>
+                      </span>
+                      <span>Data (Soon)</span>
+                    </a>
+		  </span>
+		</div>
 
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2306.15662"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/MeasuredAlbedo/code"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://umd.box.com/s/rzuzf12ooqnaxyojjgam09zctgp8fr2c"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
+              </div>
             </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- <div class="columns"> -->
-      <!--   <div class="column"> -->
-      <!--     <img src="./static/images/iiw_comparison_1.png"/> -->
-      <!-- 	  <h2>Many algorithm produce albedo with strong artifacts despite good IIW score.</h2> -->
-      <!--   </div> -->
-      <!--   <div class="column"> -->
-      <!--     <img src="./static/images/iiw_comparison_2.png"/> -->
-      <!-- 	  <h2>Our proposed metrics, including chromaticity, intensity, and texture captures these artifacts. </h2> -->
-      <!--   </div> -->
-	<!-- </div> -->
-      <img src="./static/images/gt_albedo.png"/>
-      <h2>Our proposed dataset, Measured Albedo in the Wild (MAW), provides groundtruth albedo and shading annotation for 888 images of 46 in-the-wild indoor scenes.</h2>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-	    Intrinsic image decomposition and inverse rendering are long-standing problems in computer vision. To evaluate albedo recovery, most algorithms report their quantitative performance with a mean Weighted Human Disagreement Rate (WHDR) metric on the IIW dataset. However, WHDR focuses only on relative albedo values and often fails to capture overall quality of the albedo. In order to comprehensively evaluate albedo, we collect a new dataset, Measured Albedo in the Wild (MAW), and propose three new metrics that complement WHDR: intensity, chromaticity and texture metrics. We show that existing algorithms often improve WHDR metric but perform poorly on other metrics.
-	  </p>
-	  <p>
-	    We then finetune different algorithms on our MAW dataset to significantly improve the quality of the reconstructed albedo both quantitatively and qualitatively. Since the proposed intensity, chromaticity, and texture metrics and the WHDR are all complementary we further introduce a relative performance measure that captures average performance. By analysing existing algorithms we show that there is significant room for improvement. Our dataset and evaluation metrics will enable researchers to develop algorithms that improve albedo reconstruction. 
-	   </p> 
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column">
-        <h2 class="title">Overview of MAW Dataset Collection and Evaluation Pipeline</h2>
-	<div class="content">
-	<p>Overview of the data collection and evaluation pipeline of MAW dataset. For each region with homogeneous albedo, we measure albedo as a single RGB vector after averaging. For a given predicted albedo image, we select pixels that lie inside the region, yielding a single RGB vector after averaging. We then compare the predicted albedo against the ground-truth using our metrics.</p>	
-	<img src="./static/images/measure_albedo.png">
+	  </div>
 	</div>
       </div>
-    </div>
-    <!--/ Animation. -->
-    <div class="columns is-centered">
-      <!-- Visual Effects. -->
-      <div class="column">
-        <h2 class="title">WHDR Metric Alone</h2>
-	<div class="content">
-          <p>
-	    Many existing algorithm produce albedo with strong artifacts despite good IIW score, due to worse chromaticity (first row), intensity (second row), and texture (third row).
-	  </p>
-          <!-- <video id="dollyzoom" autoplay controls muted loop playsinline height="100%"> -->
-          <!--   <source src="./static/videos/dollyzoom-stacked.mp4" -->
-          <!--           type="video/mp4"> -->
-    <!-- </video> -->
-          <img src="./static/images/iiw_comparison_1.png" />
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
+    </section>
 
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title">WHDR + Proposed Metrics</h2>
-	<div class="content">
-          <p>
-	    With WHDR + proposed metrics, we can capture these artifacts in chromaticity (first row), intensity (second row), and texture (third row).
-          </p>
-	  <img src="./static/images/iiw_comparison_2.png" />
-        </div>
-      </div>
-    </div>
-    <!--/ Matting. -->
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Finetuning</h2>
-	<div class="content">
-	  <p>
-	    Despite that our dataset only contain 888 images, we show finetuning significantly improves albedo prediction of state-of-the-art algorithms. Notice the improvements in color tinge.
-	  </p>
-	  <img src="./static/images/finetune_qual.png">
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
+	<div class="hero-body">
+	  <!-- <div class="columns"> -->
+	    <!--   <div class="column"> -->
+	      <!--     <img src="./static/images/iiw_comparison_1.png"/> -->
+	      <!-- 	  <h2>Many algorithm produce albedo with strong artifacts despite good IIW score.</h2> -->
+	      <!--   </div> -->
+	    <!--   <div class="column"> -->
+	      <!--     <img src="./static/images/iiw_comparison_2.png"/> -->
+	      <!-- 	  <h2>Our proposed metrics, including chromaticity, intensity, and texture captures these artifacts. </h2> -->
+	      <!--   </div> -->
+	    <!-- </div> -->
+	  <img src="./static/images/teaser.png"/>
+	  <h2>Our proposed system, GaNI, recovers high quality reflectance with co-located light and camera images.</h2>
 	</div>
       </div>
-    </div>
-    <!--/ Concurrent Work. -->
-  </div>
-</section>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+	<!-- Abstract. -->
+	<div class="columns is-centered has-text-centered">
+	  <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+		In this paper, we present GaNI, a Global and Near-field Illumination-aware neural inverse rendering technique that can reconstruct geometry, albedo, and roughness parameters from images of a scene captured with co-located light and camera. Existing inverse rendering techniques with co-located light-camera focus on single objects only, without modeling global illumination and near-field lighting more prominent in scenes with multiple objects. We introduce a system that solves this problem in two stages; we first reconstruct the geometry powered by neural volumetric rendering NeuS, followed by inverse neural radiosity NeRad that uses the previously predicted geometry to estimate albedo and roughness. However, such a naive combination fails and we propose multiple technical contributions that enable this two-stage approach. We observe that NeuS fails to handle near-field illumination and strong specular reflections from the flashlight in a scene. We propose to implicitly model the effects of near-field illumination and introduce a surface angle loss function to handle specular reflections. Similarly, we observe that NeRad assumes constant illumination throughout the capture and cannot handle moving flashlights during capture. We propose a light position-aware radiance cache network and additional smoothness priors on roughness to reconstruct reflectance. Experimental evaluation on synthetic and real data shows that our method outperforms the existing co-located light-camera-based inverse rendering techniques. Our approach produces significantly better reflectance and slightly better geometry than capture strategies that do not require a dark room.
+	      </p>
+            </div>
+	  </div>
+	</div>
+	<!--/ Abstract. -->
+    </section>
 
 
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>
-	@misc{wu2023measured,
-      title={Measured Albedo in the Wild: Filling the Gap in Intrinsics Evaluation}, 
-      author={Jiaye Wu and Sanjoy Chowdhury and Hariharmano Shanmugaraja and David Jacobs and Soumyadip Sengupta},
-      year={2023},
-      eprint={2306.15662},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-}
-    </code></pre>
-  </div>
-</section>
+    <!-- <section class="section"> -->
+      <!--   <div class="container is-max-desktop"> -->
+	<!-- 	<\!-- Abstract. -\-> -->
+	  <!-- 	<div class="columns is-centered has-text-centered"> -->
+	    <!-- 	  <div class="column is-four-fifths"> -->
+              
+              
+	      <!-- 	  </div> -->
+	    <!-- 	</div> -->
+	  <!-- 	<\!--/ Abstract. -\-> -->
+	    <!-- </section> -->
+    <section class="section">
+      <div class="container is-max-desktop">
+	<div class="columns is-centered">
+	  <div class="column is-full-width">
+            <h2 class="title is-3">Qualitative Comparison of Geometry</h2>
+	    <div class="content">
+	      <p>
+		
+	      </p>
+	      <img src="./static/images/material_qual.png">
+	    </div>
+	  </div>
+	</div>
 
+	<div class="columns is-centered">
+	  <div class="column is-full-width">
+            <h2 class="title is-3">Qualitative Comparison of Material Estimation</h2>
+	    <div class="content">
+	      <p>
+		We present estimated albedo, and roughness in validation views for the synthetic scenes (row 1-3) and real scenes (row 4-7). Our method produces significantly better albedo, roughness and re-rendering w.r.t. IRON due to our ability to better model near-field and global illumination.
+	      </p>
+	      <img src="./static/images/material_qual.png">
+	    </div>
+	  </div>
+	</div>
 
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-              Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-						    href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
-          </p>
-        </div>
+	<h2 class="title is-2">Novel View Re-Rendering</h2>
+	<div class="content">
+	  <p>We show videos features our scenes with ambient lighting with moving point light sources and cameras to demonstrate the practical applications of our method on re-rendering. </p>
+	</div>
+	<h3 class="title is-3">Real Data</h3>
+	<section class="hero is-light is-small">
+	  <div class="hero-body">
+	    <div class="container">
+	      <div id="results-carousel" class="carousel results-carousel">
+		<div class="item-1">
+		  <video poster="" id="shoe-rack" autoplay controls muted loop playsinline height="100%">
+		    <source src="./static/videos/shoe_rack.mp4"
+			    type="video/mp4">
+		  </video>
+		</div>
+		<div class="item-2">
+		  <video poster="" id="table" autoplay controls muted loop playsinline height="100%">
+		    <source src="./static/videos/table.mp4"
+			    type="video/mp4">
+		  </video>
+		</div>
+		<div class="item-3">
+		  <video poster="" id="window-sill" autoplay controls muted loop playsinline height="100%">
+		    <source src="./static/videos/window_sill.mp4"
+			    type="video/mp4">
+		  </video>
+		</div>
+		<div class="item-4">
+		  <video poster="" id="coffee-table" autoplay controls muted loop playsinline height="100%">
+		    <source src="./static/videos/coffee_table.mp4"
+			    type="video/mp4">
+		  </video>
+		</div>
+	      </div>
+	    </div>
+	  </div>	    
+	</section>
+	<h3 class="title is-3">Synthetic Data</h3>
+	<section class="hero is-light is-small">
+	  <div class="hero-body">
+	    <div class="container">
+	      <div id="results-carousel-2" class="carousel">
+		<div class="item-1">
+		  <video poster="" id="kitchen-counter" autoplay controls muted loop playsinline height="100%">
+		    <source src="./static/videos/kitchen_counter.mp4"
+			    type="video/mp4">
+		  </video>
+		</div>
+		<div class="item-2">
+		  <video poster="" id="shelf" autoplay controls muted loop playsinline height="100%">
+		    <source src="./static/videos/shelf.mp4"
+			    type="video/mp4">
+		  </video>
+		</div>
+		<div class="item-3">
+		  <video poster="" id="bedroom" autoplay controls muted loop playsinline height="100%">
+		    <source src="./static/videos/bedroom.mp4"
+			    type="video/mp4">
+		  </video>
+		</div>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+
       </div>
-    </div>
-  </div>
-</footer>
+    </section> 
 
-</body>
+
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+	<h2 class="title">BibTeX</h2>
+	<pre><code>
+	    @misc{wu2023measured,
+	    title={Measured Albedo in the Wild: Filling the Gap in Intrinsics Evaluation}, 
+	    author={Jiaye Wu and Sanjoy Chowdhury and Hariharmano Shanmugaraja and David Jacobs and Soumyadip Sengupta},
+	    year={2023},
+	    eprint={2306.15662},
+	    archivePrefix={arXiv},
+	    primaryClass={cs.CV}
+	    }
+	</code></pre>
+      </div>
+    </section>
+
+
+    <footer class="footer">
+      <div class="container">
+	<div class="content has-text-centered">
+	  <a class="icon-link"
+             href="./static/videos/nerfies_paper.pdf">
+            <i class="fas fa-file-pdf"></i>
+	  </a>
+	  <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+            <i class="fab fa-github"></i>
+	  </a>
+	</div>
+	<div class="columns is-centered">
+	  <div class="column is-8">
+            <div class="content">
+              <p>
+		This website is licensed under a <a rel="license"
+                                                    href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+		  Commons Attribution-ShareAlike 4.0 International License</a>.
+              </p>
+              <p>
+		This means you are free to borrow the <a
+							href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+		we just ask that you link back to this page in the footer.
+		Please remember to remove the analytics code included in the header of the website which
+		you do not want on your website.
+              </p>
+            </div>
+	  </div>
+	</div>
+      </div>
+    </footer>
+
+  </body>
 </html>

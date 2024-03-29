@@ -1,14 +1,14 @@
-# Nerfies
+# GaNI: Global and Near Field Illumination Aware Neural Inverse Rendering
 
-This is the repository that contains source code for the [MAW website](https://MeasuredAlbedo.github.io).
+This is the repository that contains source code for the [GaNI website](https://GaNI-IR.github.io).
 
 If you find MAW dataset useful for your work please cite:
 ```
-@article{MAW,
-  author    = {Wu, Jiaye and Chowdhury, Sanjoy and Shanmugaraja, Hariharmano and Jacobs, David and Sengupta, Soumyadip},
-  title     = {Measured Albedo in the Wild: Filling the Gap in Intrinsics Evaluation},
+@article{GaNI,
+  author    = {Wu, Jiaye and Hadadan, Saeed and Lin, Geng and Zwicker, Matthias and Jacobs, David and Sengupta, Roni},
+  title     = {GaNI: Global and Near Field Illumination Aware Neural Inverse Rendering},
   journal   = {COPR},
-  year      = {2023},
+  year      = {2024},
 }
 ```
 
