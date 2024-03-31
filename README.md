@@ -2,7 +2,7 @@
 
 This is the repository that contains source code for the [GaNI website](https://GaNI-IR.github.io).
 
-If you find MAW dataset useful for your work please cite:
+If you find GaNI useful for your work please cite:
 ```
 @article{GaNI,
   author    = {Wu, Jiaye and Hadadan, Saeed and Lin, Geng and Zwicker, Matthias and Jacobs, David and Sengupta, Roni},
